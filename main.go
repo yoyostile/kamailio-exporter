@@ -16,7 +16,7 @@ import (
 )
 
 var addr = flag.String("listen-address", ":8080", "The address to listen on for HTTP requests.")
-var instance = flag.String("instance", "localhost:5060", "Instance")
+var instances = flag.String("instances", "localhost:5060,127.0.0.1:5060", "Instances")
 var every = flag.String("every", "1m", "Update time")
 var myClient = &http.Client{Timeout: 10 * time.Second}
 
@@ -1067,20 +1067,24 @@ func getMeasurement(instance string, target interface{}) error {
 
 func collectSample() {
 	log.Println("Collecting sample...")
-	kamMeasurement := new(Measurement)
-	getMeasurement(*instance, kamMeasurement)
+	arr := strings.Split(*instances, ",")
 
-  for _, el := range kamMeasurement.Result {
-  	arr := strings.Split(el, " = ")
-  	metric := arr[0]
-  	value, err := strconv.ParseFloat(arr[1], 64)
-  	if err != nil {
-  		log.Println(err)
-  		continue
-  	}
-  	if measurementMapping[metric] != nil {
-	  	measurementMapping[metric].With(prometheus.Labels{"instance": *instance}).Set(value)
-  	}
+	for _, instance := range arr {
+		kamMeasurement := new(Measurement)
+		getMeasurement(instance, kamMeasurement)
+
+	  for _, el := range kamMeasurement.Result {
+	  	arr := strings.Split(el, " = ")
+	  	metric := arr[0]
+	  	value, err := strconv.ParseFloat(arr[1], 64)
+	  	if err != nil {
+	  		log.Println(err)
+	  		continue
+	  	}
+	  	if measurementMapping[metric] != nil {
+		  	measurementMapping[metric].With(prometheus.Labels{"instance": instance}).Set(value)
+	  	}
+		}
 	}
 }
 
