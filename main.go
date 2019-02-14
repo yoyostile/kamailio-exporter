@@ -21,260 +21,260 @@ var every = flag.String("every", "1m", "Update time")
 var myClient = &http.Client{Timeout: 10 * time.Second}
 
 var (
-	CoreBadUrisRcvd = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreBadUrisRcvd = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_bad_uris_rcvd",
 	    Help: "kam_core_bad_uris_rcvd",
 	  },
 	  []string{"instance"},
 	)
-	CoreBadMsgHdr = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreBadMsgHdr = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_bad_msg_hdr",
 	    Help: "kam_core_bad_msg_hdr",
 	  },
 	  []string{"instance"},
 	)
-	CoreDropReply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreDropReply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_drop_reply",
 	    Help: "kam_core_drop_reply",
 	  },
 	  []string{"instance"},
 	)
-	CoreDropRequest = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreDropRequest = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_drop_request",
 	    Help: "kam_core_drop_request",
 	  },
 	  []string{"instance"},
 	)
-	CoreErrReply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreErrReply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_err_reply",
 	    Help: "kam_core_err_reply",
 	  },
 	  []string{"instance"},
 	)
-	CoreErrRequest = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreErrRequest = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_err_request",
 	    Help: "kam_core_err_request",
 	  },
 	  []string{"instance"},
 	)
-	CoreFwdReply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreFwdReply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_fwd_reply",
 	    Help: "kam_core_fwd_reply",
 	  },
 	  []string{"instance"},
 	)
-	CoreFwdRequest = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreFwdRequest = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_fwd_request",
 	    Help: "kam_core_fwd_request",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvReply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvReply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_reply",
 	    Help: "kam_core_rcv_reply",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvReplies18x = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvReplies18x = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_replies18x",
 	    Help: "kam_core_rcv_replies18x",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvReplies1xx = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvReplies1xx = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_replies1xx",
 	    Help: "kam_core_rcv_replies1xx",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvReplies2xx = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvReplies2xx = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_replies2xx",
 	    Help: "kam_core_rcv_replies2xx",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvReplies3xx = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvReplies3xx = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_replies3xx",
 	    Help: "kam_core_rcv_replies3xx",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvReplies401 = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvReplies401 = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_replies401",
 	    Help: "kam_core_rcv_replies401",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvReplies404 = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvReplies404 = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_replies404",
 	    Help: "kam_core_rcv_replies404",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvReplies407 = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvReplies407 = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_replies407",
 	    Help: "kam_core_rcv_replies407",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvReplies480 = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvReplies480 = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_replies480",
 	    Help: "kam_core_rcv_replies480",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvReplies486 = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvReplies486 = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_replies486",
 	    Help: "kam_core_rcv_replies486",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvReplies4xx = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvReplies4xx = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_replies4xx",
 	    Help: "kam_core_rcv_replies4xx",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvReplies5xx = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvReplies5xx = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_replies5xx",
 	    Help: "kam_core_rcv_replies5xx",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvReplies6xx = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvReplies6xx = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_replies6xx",
 	    Help: "kam_core_rcv_replies6xx",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvRequest = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvRequest = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_request",
 	    Help: "kam_core_rcv_request",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvRequestsAck = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvRequestsAck = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_requests_ack",
 	    Help: "kam_core_rcv_requests_ack",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvRequestsBye = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvRequestsBye = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_requests_bye",
 	    Help: "kam_core_rcv_requests_bye",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvRequestsCancel = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvRequestsCancel = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_requests_cancel",
 	    Help: "kam_core_rcv_requests_cancel",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvRequestsInfo = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvRequestsInfo = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_requests_info",
 	    Help: "kam_core_rcv_requests_info",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvRequestsInvite = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvRequestsInvite = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_requests_invite",
 	    Help: "kam_core_rcv_requests_invite",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvRequestsMessage = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvRequestsMessage = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_requests_message",
 	    Help: "kam_core_rcv_requests_message",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvRequestsNotify = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvRequestsNotify = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_requests_notify",
 	    Help: "kam_core_rcv_requests_notify",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvRequestsOption = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvRequestsOption = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_requests_option",
 	    Help: "kam_core_rcv_requests_option",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvRequestsPrack = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvRequestsPrack = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_requests_prack",
 	    Help: "kam_core_rcv_requests_prack",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvRequestsPublish = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvRequestsPublish = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_requests_publish",
 	    Help: "kam_core_rcv_requests_publish",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvRequestsRefer = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvRequestsRefer = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_requests_refer",
 	    Help: "kam_core_rcv_requests_refer",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvRequestsRegister = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvRequestsRegister = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_requests_register",
 	    Help: "kam_core_rcv_requests_register",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvRequestsSubscribe = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvRequestsSubscribe = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_requests_subscribe",
 	    Help: "kam_core_rcv_requests_subscribe",
 	  },
 	  []string{"instance"},
 	)
-	CoreRcvRequestsUpdate = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreRcvRequestsUpdate = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_rcv_requests_update",
 	    Help: "kam_core_rcv_requests_update",
 	  },
 	  []string{"instance"},
 	)
-	CoreUnsupportedMethod = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	CoreUnsupportedMethod = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_core_unsupported_method",
 	    Help: "kam_core_unsupported_method",
 	  },
@@ -294,64 +294,64 @@ var (
 	  },
 	  []string{"instance"},
 	)
-	DialogExpiredDialog = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	DialogExpiredDialog = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_dialog_expired_dialog",
 	    Help: "kam_dialog_expired_dialog",
 	  },
 	  []string{"instance"},
 	)
-	DialogFailedDialog = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	DialogFailedDialog = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_dialog_failed_dialog",
 	    Help: "kam_dialog_failed_dialog",
 	  },
 	  []string{"instance"},
 	)
-	DialogProcessedDialog = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	DialogProcessedDialog = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_dialog_processed_dialog",
 	    Help: "kam_dialog_processed_dialog",
 	  },
 	  []string{"instance"},
 	)
-	DnsFailedDnsRequest = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	DnsFailedDnsRequest = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_dns_failed_dns_request",
 	    Help: "kam_dns_failed_dns_request",
 	  },
 	  []string{"instance"},
 	)
-	HttpclientConnection = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	HttpclientConnection = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_httpclient_connection",
 	    Help: "kam_httpclient_connection",
 	  },
 	  []string{"instance"},
 	)
-	HttpclientConnfail = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	HttpclientConnfail = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_httpclient_connfail",
 	    Help: "kam_httpclient_connfail",
 	  },
 	  []string{"instance"},
 	)
-	HttpclientConnok = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	HttpclientConnok = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_httpclient_connok",
 	    Help: "kam_httpclient_connok",
 	  },
 	  []string{"instance"},
 	)
-	MysqlDriverError = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	MysqlDriverError = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_mysql_driver_error",
 	    Help: "kam_mysql_driver_error",
 	  },
 	  []string{"instance"},
 	)
-	RegistrarAcceptedReg = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	RegistrarAcceptedReg = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_registrar_accepted_reg",
 	    Help: "kam_registrar_accepted_reg",
 	  },
@@ -392,8 +392,8 @@ var (
 	  },
 	  []string{"instance"},
 	)
-	RegistrarRejectedReg = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	RegistrarRejectedReg = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_registrar_rejected_reg",
 	    Help: "kam_registrar_rejected_reg",
 	  },
@@ -441,204 +441,204 @@ var (
 	  },
 	  []string{"instance"},
 	)
-	Sl1xxReply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl1xxReply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl1xx_reply",
 	    Help: "kam_sl1xx_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl200Reply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl200Reply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl200_reply",
 	    Help: "kam_sl200_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl202Reply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl202Reply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl202_reply",
 	    Help: "kam_sl202_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl2xxReply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl2xxReply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl2xx_reply",
 	    Help: "kam_sl2xx_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl300Reply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl300Reply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl300_reply",
 	    Help: "kam_sl300_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl301Reply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl301Reply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl301_reply",
 	    Help: "kam_sl301_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl302Reply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl302Reply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl302_reply",
 	    Help: "kam_sl302_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl3xxReply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl3xxReply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl3xx_reply",
 	    Help: "kam_sl3xx_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl400Reply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl400Reply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl400_reply",
 	    Help: "kam_sl400_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl401Reply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl401Reply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl401_reply",
 	    Help: "kam_sl401_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl403Reply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl403Reply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl403_reply",
 	    Help: "kam_sl403_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl404Reply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl404Reply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl404_reply",
 	    Help: "kam_sl404_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl407Reply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl407Reply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl407_reply",
 	    Help: "kam_sl407_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl408Reply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl408Reply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl408_reply",
 	    Help: "kam_sl408_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl483Reply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl483Reply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl483_reply",
 	    Help: "kam_sl483_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl4xxReply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl4xxReply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl4xx_reply",
 	    Help: "kam_sl4xx_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl500Reply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl500Reply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl500_reply",
 	    Help: "kam_sl500_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl5xxReply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl5xxReply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl5xx_reply",
 	    Help: "kam_sl5xx_reply",
 	  },
 	  []string{"instance"},
 	)
-	Sl6xxReply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Sl6xxReply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl6xx_reply",
 	    Help: "kam_sl6xx_reply",
 	  },
 	  []string{"instance"},
 	)
-	SlFailure = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	SlFailure = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl_failure",
 	    Help: "kam_sl_failure",
 	  },
 	  []string{"instance"},
 	)
-	SlReceivedAck = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	SlReceivedAck = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl_received_ack",
 	    Help: "kam_sl_received_ack",
 	  },
 	  []string{"instance"},
 	)
-	SlSentErrReply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	SlSentErrReply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl_sent_err_reply",
 	    Help: "kam_sl_sent_err_reply",
 	  },
 	  []string{"instance"},
 	)
-	SlSentReply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	SlSentReply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl_sent_reply",
 	    Help: "kam_sl_sent_reply",
 	  },
 	  []string{"instance"},
 	)
-	SlXxxReply = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	SlXxxReply = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_sl_xxx_reply",
 	    Help: "kam_sl_xxx_reply",
 	  },
 	  []string{"instance"},
 	)
-	TcpConReset = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TcpConReset = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tcp_con_reset",
 	    Help: "kam_tcp_con_reset",
 	  },
 	  []string{"instance"},
 	)
-	TcpConTimeout = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TcpConTimeout = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tcp_con_timeout",
 	    Help: "kam_tcp_con_timeout",
 	  },
 	  []string{"instance"},
 	)
-	TcpConnectFailed = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TcpConnectFailed = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tcp_connect_failed",
 	    Help: "kam_tcp_connect_failed",
 	  },
 	  []string{"instance"},
 	)
-	TcpConnectSuccess = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TcpConnectSuccess = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tcp_connect_success",
 	    Help: "kam_tcp_connect_success",
 	  },
 	  []string{"instance"},
 	)
-	TcpCurrentOpenedConnection = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TcpCurrentOpenedConnection = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tcp_current_opened_connection",
 	    Help: "kam_tcp_current_opened_connection",
 	  },
@@ -651,134 +651,134 @@ var (
 	  },
 	  []string{"instance"},
 	)
-	TcpEstablished = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TcpEstablished = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tcp_established",
 	    Help: "kam_tcp_established",
 	  },
 	  []string{"instance"},
 	)
-	TcpLocalReject = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TcpLocalReject = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tcp_local_reject",
 	    Help: "kam_tcp_local_reject",
 	  },
 	  []string{"instance"},
 	)
-	TcpPassiveOpen = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TcpPassiveOpen = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tcp_passive_open",
 	    Help: "kam_tcp_passive_open",
 	  },
 	  []string{"instance"},
 	)
-	TcpSendTimeout = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TcpSendTimeout = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tcp_send_timeout",
 	    Help: "kam_tcp_send_timeout",
 	  },
 	  []string{"instance"},
 	)
-	TcpSendqFull = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TcpSendqFull = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tcp_sendq_full",
 	    Help: "kam_tcp_sendq_full",
 	  },
 	  []string{"instance"},
 	)
-	Tmx2xxTransaction = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Tmx2xxTransaction = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tmx2xx_transaction",
 	    Help: "kam_tmx2xx_transaction",
 	  },
 	  []string{"instance"},
 	)
-	Tmx3xxTransaction = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Tmx3xxTransaction = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tmx3xx_transaction",
 	    Help: "kam_tmx3xx_transaction",
 	  },
 	  []string{"instance"},
 	)
-	Tmx4xxTransaction = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Tmx4xxTransaction = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tmx4xx_transaction",
 	    Help: "kam_tmx4xx_transaction",
 	  },
 	  []string{"instance"},
 	)
-	Tmx5xxTransaction = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Tmx5xxTransaction = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tmx5xx_transaction",
 	    Help: "kam_tmx5xx_transaction",
 	  },
 	  []string{"instance"},
 	)
-	Tmx6xxTransaction = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	Tmx6xxTransaction = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tmx6xx_transaction",
 	    Help: "kam_tmx6xx_transaction",
 	  },
 	  []string{"instance"},
 	)
-	TmxUacTransaction = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TmxUacTransaction = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tmx_uac_transaction",
 	    Help: "kam_tmx_uac_transaction",
 	  },
 	  []string{"instance"},
 	)
-	TmxUasTransaction = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TmxUasTransaction = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tmx_uas_transaction",
 	    Help: "kam_tmx_uas_transaction",
 	  },
 	  []string{"instance"},
 	)
-	TmxActiveTransaction = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TmxActiveTransaction = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tmx_active_transaction",
 	    Help: "kam_tmx_active_transaction",
 	  },
 	  []string{"instance"},
 	)
-	TmxInuseTransaction = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TmxInuseTransaction = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tmx_inuse_transaction",
 	    Help: "kam_tmx_inuse_transaction",
 	  },
 	  []string{"instance"},
 	)
-	TmxRplAbsorbed = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TmxRplAbsorbed = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tmx_rpl_absorbed",
 	    Help: "kam_tmx_rpl_absorbed",
 	  },
 	  []string{"instance"},
 	)
-	TmxRplGenerated = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TmxRplGenerated = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tmx_rpl_generated",
 	    Help: "kam_tmx_rpl_generated",
 	  },
 	  []string{"instance"},
 	)
-	TmxRplReceived = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TmxRplReceived = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tmx_rpl_received",
 	    Help: "kam_tmx_rpl_received",
 	  },
 	  []string{"instance"},
 	)
-	TmxRplRelayed = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TmxRplRelayed = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tmx_rpl_relayed",
 	    Help: "kam_tmx_rpl_relayed",
 	  },
 	  []string{"instance"},
 	)
-	TmxRplSent = prometheus.NewGaugeVec(
-	  prometheus.GaugeOpts{
+	TmxRplSent = prometheus.NewCounterVec(
+	  prometheus.CounterOpts{
 	    Name: "kam_tmx_rpl_sent",
 	    Help: "kam_tmx_rpl_sent",
 	  },
